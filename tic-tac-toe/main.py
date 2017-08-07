@@ -33,7 +33,7 @@ def player(turn):
 
 def choose():
     if player_one_turn:
-        
+
     else:
 
 
