@@ -16,11 +16,37 @@
 #
 import webapp2
 
-
+choice = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('hello world!')
+        self.response.write('Make choice')
+
+
+
+def player(turn):
+    for turn in range(0, 9):
+        if turn==0 or turn ==2 or turn==4 or turn==6 or turn==8:
+            player_one_turn = True
+        elif turn==1 or turn==3 or turn==5 or turn==7:
+            player_one_turn = False
+
+def choose():
+    if player_one_turn:
+
+    else:
+
+
+        # if _ _ _ _ _ :
+        #     turn +=1
+        # print player_one_turn
+
+
+
+
+player(0)
+
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
