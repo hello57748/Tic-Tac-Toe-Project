@@ -80,7 +80,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
 
->>>>>>> 815f3fb2ebe5d49ec81641f446043bb770a909fd
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
