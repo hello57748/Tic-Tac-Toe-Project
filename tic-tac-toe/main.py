@@ -21,24 +21,36 @@ import os
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-choice = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+cells = {"player_symbol0": "", "player_symbol1": "", "player_symbol2": "",
+        "player_symbol3": "", "player_symbol4": "", "player_symbol5": "",
+        "player_symbol6": "", "player_symbol7": "", "player_symbol8": ""}
+turn = 0
 
 class MainHandler(webapp2.RequestHandler):
-
-    def player(turn):
-        if turn %2 == 0:
-            player_symbol = "x"
-            button_input = "<input type=\"button\" id='place0' value="+ player_symbol +">"
-        elif turn %2 != 0:
-            player_symbol = "o"
-            button_input = "<input type=\"button\" id='place0' value="+ player_symbol +">"
-        return player_symbol
-
+    def player(self, space):
+        global turn
+        global cells
+        if turn == 0:
+            cells["player_symbol" + str(space)] = "x"
+            turn = 1
+        elif turn == 1:
+            cells["player_symbol" + str(space)] = "o"
+            turn = 0
 
     def get(self):
+        global turn
+        global cells
+        # turns = [{'player': '1', 'symbol': 'x'},
+        #          {'player': '2', 'symbol': 'o'}]
+        #
+        # for i in range(9):
+        #    if i % 2 == 0:
+        #        turns['turn_' + str(i)] = 'x'
+        #    else:
+        #        turns['turn_' + str(i)] = 'o'
         self.response.write('Make choice')
         template = jinja_environment.get_template('main.html')
-        self.response.out.write(template.render(variables))
+        self.response.out.write(template.render(cells))
 
 
 

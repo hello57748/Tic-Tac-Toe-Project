@@ -40,35 +40,26 @@
 
 
     -->
-
 <center>
-  {% set counter = 0 %}
-  {% for button in range(0, 9) %}
-    {% if counter % 2 == 0 %}
-         {% player(counter) %}
-    {% elif counter % 2 != 0 %}
-         {% player(counter) %}
-    {% endif %}
-{% endfor %}
-   <input type="button" id='place0' value=' ' onclick= value={{player_symbol}}>
-    <input type="button" id='place1' value=' ' onclick= value="x">
-    <input type="button" id='place2' value=' ' onclick= value="x">
+   <input type="button" id='place0' value= "">
+    <input type="button" id='place1' value= "">
+    <input type="button" id='place2' value= "">
     <br/>
-    <input type="button" id='place3' value=' ' onclick= value="x">
-    <input type="button" id='place4' value=' ' onclick= value="x">
-    <input type="button" id='place5' value=' ' onclick= value="x">
+    <input type="button" id='place3' value= "" >
+    <input type="button" id='place4' value= "">
+    <input type="button" id='place5' value= "">
     <br/>
-    <input type="button" id='place6' value=' ' onclick= value="x">
-    <input type="button" id='place7' value=' ' onclick= value="x">
-    <input type="button" id='place8' value=' ' onclick= value="x">
+    <input type="button" id='place6' value= "">
+    <input type="button" id='place7' value= "">
+    <input type="button" id='place8' value= "">
 
 
   </center>
 
-
-  </body>
-
   <script src="jquery-3.2.1.js"></script>
   <script src="script.js"></script>
+  </body>
+
+
 
 </html>
