@@ -24,22 +24,27 @@ jinja_environment = jinja2.Environment(
 choice = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 class MainHandler(webapp2.RequestHandler):
+
+    def player(turn):
+        if turn %2 == 0:
+            player_symbol = "x"
+            button_input = "<input type=\"button\" id='place0' value="+ player_symbol +">"
+        elif turn %2 != 0:
+            player_symbol = "o"
+            button_input = "<input type=\"button\" id='place0' value="+ player_symbol +">"
+        return player_symbol
+
+
     def get(self):
         self.response.write('Make choice')
-
-    template = jinja_environmet.get_template('tic-tac-toe/main.html')
+        template = jinja_environment.get_template('main.html')
         self.response.out.write(template.render(variables))
 
 
 
-def player(turn):
-    for turn in range(0, 9):
-        if turn==0 or turn ==2 or turn==4 or turn==6 or turn==8:
-            player_one_turn = True
-        elif turn==1 or turn==3 or turn==5 or turn==7:
-            player_one_turn = False
 
-player_symbol=
+
+
 
 # def post():
 #     if player_one_turn:
@@ -54,7 +59,7 @@ player_symbol=
 
 
 
-player(0)
+
 
 
 
