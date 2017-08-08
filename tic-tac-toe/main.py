@@ -15,6 +15,10 @@
 # limitations under the License.
 #
 import webapp2
+import jinja2
+
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 choice = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -31,9 +35,9 @@ def player(turn):
         elif turn==1 or turn==3 or turn==5 or turn==7:
             player_one_turn = False
 
-def choose():
+def post():
     if player_one_turn:
-
+        play_val = "x"
     else:
 
 
