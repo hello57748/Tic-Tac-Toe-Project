@@ -16,6 +16,7 @@
 #
 import webapp2
 import jinja2
+import os
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -26,6 +27,9 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Make choice')
 
+    template = jinja_environmet.get_template('tic-tac-toe/main.html')
+        self.response.out.write(template.render(variables))
+
 
 
 def player(turn):
@@ -35,10 +39,12 @@ def player(turn):
         elif turn==1 or turn==3 or turn==5 or turn==7:
             player_one_turn = False
 
-def post():
-    if player_one_turn:
-        play_val = "x"
-    else:
+player_symbol=
+
+# def post():
+#     if player_one_turn:
+#         play_val = "x"
+#     else:
 
 
         # if _ _ _ _ _ :
