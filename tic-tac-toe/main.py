@@ -15,8 +15,11 @@
 # limitations under the License.
 #
 import webapp2
-import jinja2
 import os
+import jinja2
+import logging
+
+from players import Player
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -38,16 +41,21 @@ class MainHandler(webapp2.RequestHandler):
             turn = 0
 
     def get(self):
-        global turn
-        global cells
-        # turns = [{'player': '1', 'symbol': 'x'},
-        #          {'player': '2', 'symbol': 'o'}]
-        #
-        # for i in range(9):
-        #    if i % 2 == 0:
-        #        turns['turn_' + str(i)] = 'x'
-        #    else:
-        #        turns['turn_' + str(i)] = 'o'
+    	main_template = jinja_environment.get_template('main.html')
+        self.response.write(main_template.render())
+
+    def post(self):
+    	p_name = self.request.get('player_one_name')
+    	p_name = self.request.get('player_two_name')
+
+    	first_player = Player(name_one = p_name)
+    	second_player = Player(name_two = p_name)
+
+    	ones_key = first_player.put()
+    	seconds_key = second_player.put()
+    	logging.info(ones_key.get().name_one)
+    	logging.info(seconds_key.get().name_two)
+
         self.response.write('Make choice')
         template = jinja_environment.get_template('main.html')
         self.response.out.write(template.render(cells))
