@@ -6,8 +6,9 @@
   </head>
   <link rel="stylesheet" type="text/css" href="style.css">
     <h1>Tic-Tac-Toe</h1>
-     <img src="fight.jpg" width="300" height="200" alt="Fight! picture">
         <body bgcolor="orange">
+          <center><img src="fight.jpg" width="300" height="200" alt="Fight! picture"></center>
+
  <p>By: Ryan, Armando, Jessica, and Sam</p>
 
     <!-- <input type="text" name="choice"/> -->
@@ -32,25 +33,33 @@
     -->
 
 <center>
-    <input type="button" id='1' value=' ' onclick= value="x">
-    <input type="button" id='2' value=' ' onclick= value="x">
-    <input type="button" id='3' value=' ' onclick= value="x">
+  {% set counter = 0 %}
+  {% for button in range(0, 9) %}
+    {% if counter % 2 == 0 %}
+         {% player(counter) %}
+    {% elif counter % 2 != 0 %}
+         {% player(counter) %}
+    {% endif %}
+{% endfor %}
+   <input type="button" id='place0' value=' ' onclick= value={{player_symbol}}>
+    <input type="button" id='place1' value=' ' onclick= value="x">
+    <input type="button" id='place2' value=' ' onclick= value="x">
     <br/>
-    <input type="button" id='4' value=' ' onclick= value="x">
-    <input type="button" id='5' value=' ' onclick= value="x">
-    <input type="button" id='6' value=' ' onclick= value="x">
+    <input type="button" id='place3' value=' ' onclick= value="x">
+    <input type="button" id='place4' value=' ' onclick= value="x">
+    <input type="button" id='place5' value=' ' onclick= value="x">
     <br/>
-    <input type="button" id='7' value=' ' onclick= value="x">
-    <input type="button" id='8' value=' ' onclick= value="x">
-    <input type="button" id='9' value=' ' onclick= value="x">
+    <input type="button" id='place6' value=' ' onclick= value="x">
+    <input type="button" id='place7' value=' ' onclick= value="x">
+    <input type="button" id='place8' value=' ' onclick= value="x">
 
 
   </center>
 
 
   </body>
-  
+
   <script src="jquery-3.2.1.js"></script>
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 
 </html>
