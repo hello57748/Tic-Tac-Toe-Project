@@ -52,8 +52,8 @@ class MainHandler(webapp2.RequestHandler):
         p_name = self.request.get('player_one_name')
         p_name = self.request.get('player_two_name')
 
-        first_player = Player(name_one = p_name)
-        second_player = Player(name_two = p_name)
+        first_player = Player("name_one" : p_name)
+        second_player = Player("name_two" : p_name)
 
         ones_key = first_player.put()
         seconds_key = second_player.put()
