@@ -47,13 +47,47 @@ function boardIsFull(){
   return true;
 }
 
+
+function checkWinner(){
+//checks player 2 win conditions
+  if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
+    window.alert("Player one you have won");
+  }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
+    window.alert("Player one you have won");
+  }else if (board[6] == "X" && board[7] == "X" && board[8] == "X"){
+    window.alert("Player one you have won");
+  }else if (board[0] == "X" && board[3] == "X" && board[6] == "X"){
+    window.alert("Player one you have won");
+  }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
+    window.alert("Player one you have won");
+  }else if (board[2] == "X" && board[5] == "X" && board[8] == "X"){
+    window.alert("Player one you have won");
+  }else if (board[0] == "X" && board[4] == "X" && board[8] == "X"){
+    window.alert("Player one you have won");
+  }else if (board[2] == "X" && board[4] == "X" && board[6] == "X"){
+    window.alert("Player one you have won");
+  }//checks player 2 win conditions
+  else if (board[0] == "O" && board[1] == "O" && board[2] == "O"){
+    window.alert("Player two you have won");
+  }else if (board[3] == "O" && board[4] == "O" && board[5] == "O"){
+    window.alert("Player two you have won");
+  }else if (board[6] == "O" && board[7] == "O" && board[8] == "O"){
+    window.alert("Player two you have won");
+  }else if (board[0] == "O" && board[3] == "O" && board[6] == "O"){
+    window.alert("Player two you have won");
+  }else if (board[1] == "O" && board[4] == "O" && board[7] == "O"){
+    window.alert("Player two you have won");
+  }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
+    window.alert("Player two you have won");
+  }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
+    window.alert("Player two you have won");
+  }else if (board[2] == "O" && board[4] == "O" && board[6] == "O"){
+    window.alert("Player two you have won");
+    }
+}
+
 function changeId(){
   $("input").click(function(){
-    //updates the board
-    updateBoard();
-
-    //check for winner
-    
 
     //game system
     if (boardIsFull()){
@@ -73,6 +107,10 @@ function changeId(){
       else if (spaceIsFilled(value)){ //if it's filled
         window.alert("The space is already filled.");
       }
+      //updates the board
+      updateBoard();
+      //checks for win conditions
+      checkWinner();
       // return $(id).val(player());
     }
   });
