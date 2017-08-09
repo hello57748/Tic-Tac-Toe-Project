@@ -40,28 +40,28 @@ class MainHandler(webapp2.RequestHandler):
             cells["player_symbol" + str(space)] = "o"
             turn = 0
 
+
+
     def get(self):
-    	main_template = jinja_environment.get_template('main.html')
-        self.response.write(main_template.render())
+        template = jinja_environment.get_template('templates/register.html')
+        self.response.write(template.render())
+
 
     def post(self):
-    	p_name = self.request.get('player_one_name')
-    	p_name = self.request.get('player_two_name')
+        main_template = jinja_environment.get_template('templates/main.html')
+        p_name = self.request.get('player_one_name')
+        p_name = self.request.get('player_two_name')
 
-    	first_player = Player(name_one = p_name)
-    	second_player = Player(name_two = p_name)
+        first_player = Player(name_one = p_name)
+        second_player = Player(name_two = p_name)
 
-    	ones_key = first_player.put()
-    	seconds_key = second_player.put()
-    	logging.info(ones_key.get().name_one)
-    	logging.info(seconds_key.get().name_two)
-
-        self.response.write('Make choice')
-        template = jinja_environment.get_template('main.html')
-        self.response.out.write(template.render(cells))
+        ones_key = first_player.put()
+        seconds_key = second_player.put()
+        logging.info(ones_key.get().name_one)
+        logging.info(seconds_key.get().name_two)
 
 
-
+        self.response.write(main_template.render())
 
 
 
