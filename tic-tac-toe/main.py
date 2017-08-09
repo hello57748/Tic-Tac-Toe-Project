@@ -33,21 +33,8 @@ class MainHandler(webapp2.RequestHandler):
         p_name1 = self.request.get('player_one_name')
         p_name2 = self.request.get('player_two_name')
 
-<<<<<<< HEAD
-        first_player = Player("name_one" : p_name)
-        second_player = Player("name_two" : p_name)
-
-        ones_key = first_player.put()
-        seconds_key = second_player.put()
-        logging.info(ones_key.get().name_one)
-        logging.info(seconds_key.get().name_two)
-
-
-        self.response.write(main_template.render())
-=======
         game = Player(name1 = p_name1, name2 = p_name2)
         game_key = game.put()
->>>>>>> b9c824c7a9b6e5081c92f3efe3c221cda05da5c7
 
         logging.info(game_key.get().name1)
         logging.info(game_key.get().name2)
