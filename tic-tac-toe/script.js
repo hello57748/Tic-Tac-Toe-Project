@@ -11,15 +11,44 @@ function player(){
   }
 }
 
+function isFilled(value){
+  if (value == " "){
+    return false;
+  }
+
+  else {
+    return true;
+  }
+}
+
 function changeId(){
   $("input").click(function(){
+    console.log(turn);
     var id = "#" + this.id;
+    var value = $(id).attr('value'); // either be " ", "X", "O"
     // this = "input"
     // this.id = the id
     //check if it's already filled
-    $(id).val(player());
+    if (!isFilled(value)){ //if it's not filled
+      $(id).val(player());
+    }
+
+    else if (isFilled(value)){ //if it's filled
+      window.alert("The space is already filled."); 
+    }
+    // return $(id).val(player());
   });
+
 }
+
+// function checkFilled(){
+//   if ($(changeId()).val() == "X"){
+//     $(changeId()).val() !== "O";
+//   }else if ($(changeId()).val() == "O"){
+//     $(changeId()).val() !== "X";
+//   }
+// }
+
 
 $(document).ready(changeId);
 
