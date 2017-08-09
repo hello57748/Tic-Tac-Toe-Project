@@ -24,34 +24,16 @@ from players import Player
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-cells = {"player_symbol0": "", "player_symbol1": "", "player_symbol2": "",
-        "player_symbol3": "", "player_symbol4": "", "player_symbol5": "",
-        "player_symbol6": "", "player_symbol7": "", "player_symbol8": ""}
-turn = 0
-
 class MainHandler(webapp2.RequestHandler):
-    def player(self, space):
-        global turn
-        global cells
-        if turn == 0:
-            cells["player_symbol" + str(space)] = "x"
-            turn = 1
-        elif turn == 1:
-            cells["player_symbol" + str(space)] = "o"
-            turn = 0
-
-
-
     def get(self):
         template = jinja_environment.get_template('templates/register.html')
         self.response.write(template.render())
 
-
     def post(self):
-        main_template = jinja_environment.get_template('templates/main.html')
-        p_name = self.request.get('player_one_name')
-        p_name = self.request.get('player_two_name')
+        p_name1 = self.request.get('player_one_name')
+        p_name2 = self.request.get('player_two_name')
 
+<<<<<<< HEAD
         first_player = Player("name_one" : p_name)
         second_player = Player("name_two" : p_name)
 
@@ -62,8 +44,18 @@ class MainHandler(webapp2.RequestHandler):
 
 
         self.response.write(main_template.render())
+=======
+        game = Player(name1 = p_name1, name2 = p_name2)
+        game_key = game.put()
+>>>>>>> b9c824c7a9b6e5081c92f3efe3c221cda05da5c7
 
+        logging.info(game_key.get().name1)
+        logging.info(game_key.get().name2)
 
+class SecondHandler(webapp2.RequestHandler):
+    def post(self):
+        template = jinja_environment.get_template("templates/main.html")
+        self.response.write(template.render())
 
 
 # def post():
@@ -84,5 +76,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ("/main", SecondHandler)
 ], debug=True)
