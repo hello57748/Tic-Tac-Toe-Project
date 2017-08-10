@@ -41,6 +41,7 @@
 
 
     -->
+    <br>
 <center>
    <input style="height:75px;width:75px;font-size: larger;border-color:red" type="button" id='place0' value= " ">
     <input style="height:75px;width:75px;font-size: larger;border-color:red" type="button" id='place1' value= " ">
@@ -55,9 +56,13 @@
     <input style="height:75px;width:75px;font-size: larger;border-color:red" type="button" id='place8' value= " ">
     <br/>
     <br/>
-    <input style="height:30px;width:150px;font-size: larger;border-color:red" type="button" value= "New Game">
-
-
+    <!-- <input style="height:30px;width:150px;font-size: larger;border-color:red" type="button" value= "New Game" action> -->
+    <!-- <form method="get" action="/page2">
+        <button style="height:30px;width:150px;font-size: larger;border-color:red" type="submit">New Game</button>
+    </form> -->
+    <form method = "post" action = "/game">
+    <input style="height:30px;width:150px;font-size: larger;border-color:red" type="submit" id='newGame' value="New Game" />
+  </form>
   </center>
   <h2 id="player1" value = "{{player1}}">{{player1}}</h2>
   <h2 id="player2" value = "{{player2}}">{{player2}}</h2>

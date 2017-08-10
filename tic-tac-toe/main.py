@@ -24,14 +24,16 @@ from players import Player
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
+NAMES = None
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/register.html')
         self.response.write(template.render())
 
     def post(self):
+        global NAMES
         template = jinja_environment.get_template("templates/main.html")
-
         p_name1 = self.request.get('player_one_name')
         p_name2 = self.request.get('player_two_name')
         game = Player(name1 = p_name1, name2 = p_name2)
@@ -42,8 +44,15 @@ class MainHandler(webapp2.RequestHandler):
         names = {"player1": p_name1,
                  "player2": p_name2}
 
+        NAMES = names
+        logging.info(NAMES)
         self.response.write(template.render(names))
 
+class SecondHandler(webapp2.RequestHandler):
+    def post(self):
+        global NAMES
+        template = jinja_environment.get_template("templates/main.html")
+        self.response.write(template.render(NAMES))
 
 # def post():
 #     if player_one_turn:
@@ -63,5 +72,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ("/game", SecondHandler)
 ], debug=True)
