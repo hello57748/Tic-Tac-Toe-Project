@@ -11,6 +11,9 @@ handlers:
 - url: /js
   static_dir: js
 
+- url: /resources
+  static_dir: static
+
 - url: .*
   script: main.app
 
