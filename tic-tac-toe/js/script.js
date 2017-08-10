@@ -1,4 +1,5 @@
 var turn = 0;
+var last_person = "#player1";
 board = [" ", " ", " ",
          " ", " ", " ",
          " ", " ", " "];
@@ -7,10 +8,12 @@ board = [" ", " ", " ",
 function player(){
   if (turn == 0){
     turn = 1;
+    last_person = "#player2";
     return "X";
   }
   else {
     turn = 0;
+    last_person = "#player1";
     return "O";
   }
 }
