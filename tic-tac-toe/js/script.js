@@ -13,8 +13,8 @@ board = [character, character, character,
     if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
       win = true;
       winner = $(most_recent).attr('value');
-      console.log(winner.name1)
-      console.log("TEST")
+      // console.log(winner.name1)
+      // console.log("TEST")
       // $(winner).name1(winner)//keeping track of the score
     }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
       win = true;
