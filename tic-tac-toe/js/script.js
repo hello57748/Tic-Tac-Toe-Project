@@ -1,22 +1,64 @@
 var turn = 0;
 var last_person = "#player1";
+var most_recent = "";
 board = [" ", " ", " ",
          " ", " ", " ",
          " ", " ", " "];
+
+  function checkWinner(){
+  //checks player 2 win conditions
+    if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
+      window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
+     window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[6] == "X" && board[7] == "X" && board[8] == "X"){
+      window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[0] == "X" && board[3] == "X" && board[6] == "X"){
+      window.alert($(most_recent).attr('value') + " you have won");
+}else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
+      window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[2] == "X" && board[5] == "X" && board[8] == "X"){
+      window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[0] == "X" && board[4] == "X" && board[8] == "X"){
+     window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[2] == "X" && board[4] == "X" && board[6] == "X"){
+     window.alert($(most_recent).attr('value') + " you have won");
+    }//checks player 2 win conditions
+    else if (board[0] == "O" && board[1] == "O" && board[2] == "O"){
+      window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[3] == "O" && board[4] == "O" && board[5] == "O"){
+     window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[6] == "O" && board[7] == "O" && board[8] == "O"){
+    window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[0] == "O" && board[3] == "O" && board[6] == "O"){
+      window.alert($(most_recent).attr('value') + " you have won");
+    }else if (board[1] == "O" && board[4] == "O" && board[7] == "O"){
+      window.alert($(most_recent).attr('value') + " you have won");
+      }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
+        window.alert($(most_recent).attr('value') + " you have won");
+      }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
+      window.alert($(most_recent).attr('value') + " you have won");
+      }else if (board[2] == "O" && board[4] == "O" && board[6] == "O"){
+        window.alert($(most_recent).attr('value') + " you have won");
+        }
+      }
 
 //returns the appropriate character
 function player(){
   if (turn == 0){
     turn = 1;
+    most_recent = "#player1";
     last_person = "#player2";
     return "X";
   }
   else {
     turn = 0;
+    most_recent = "#player2";
     last_person = "#player1";
     return "O";
   }
 }
+
 
 //checks if a single space is filled
 function spaceIsFilled(value){
@@ -51,47 +93,10 @@ function boardIsFull(){
 }
 
 
-function checkWinner(){
-//checks player 2 win conditions
-  if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
-    window.alert("Player one you have won");
-  }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
-    window.alert("Player one you have won");
-  }else if (board[6] == "X" && board[7] == "X" && board[8] == "X"){
-    window.alert("Player one you have won");
-  }else if (board[0] == "X" && board[3] == "X" && board[6] == "X"){
-    window.alert("Player one you have won");
-  }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
-    window.alert("Player one you have won");
-  }else if (board[2] == "X" && board[5] == "X" && board[8] == "X"){
-    window.alert("Player one you have won");
-  }else if (board[0] == "X" && board[4] == "X" && board[8] == "X"){
-    window.alert("Player one you have won");
-  }else if (board[2] == "X" && board[4] == "X" && board[6] == "X"){
-    window.alert("Player one you have won");
-  }//checks player 2 win conditions
-  else if (board[0] == "O" && board[1] == "O" && board[2] == "O"){
-    window.alert("Player two you have won");
-  }else if (board[3] == "O" && board[4] == "O" && board[5] == "O"){
-    window.alert("Player two you have won");
-  }else if (board[6] == "O" && board[7] == "O" && board[8] == "O"){
-    window.alert("Player two you have won");
-  }else if (board[0] == "O" && board[3] == "O" && board[6] == "O"){
-    window.alert("Player two you have won");
-  }else if (board[1] == "O" && board[4] == "O" && board[7] == "O"){
-    window.alert("Player two you have won");
-  }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
-    window.alert("Player two you have won");
-  }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
-    window.alert("Player two you have won");
-  }else if (board[2] == "O" && board[4] == "O" && board[6] == "O"){
-    window.alert("Player two you have won");
-    }
-}
+
 
 function changeId(){
   $("input").click(function(){
-
     //game system
     if (boardIsFull()){
       window.alert("Game over");
@@ -103,6 +108,7 @@ function changeId(){
       // this = "input"
       // this.id = the id
       //check if it's already filled
+
       if (!spaceIsFilled(value)){ //if it's not filled
         $(id).val(player());
       }
@@ -112,8 +118,7 @@ function changeId(){
       }
       //updates the board
       updateBoard();
-      //checks for win conditions
-      checkWinner();
+
       // return $(id).val(player());
       if (turn === 0){
         $("#player1").css("color", "red");
@@ -125,6 +130,8 @@ function changeId(){
         $("#player2").css("color", "red");
       }
     }
+
+    checkWinner();
   });
 
 }
@@ -141,6 +148,7 @@ function changeId(){
 $(document).ready(function(){
   $("#player1").css("color", "red");
   changeId();
+
 });
 
 
