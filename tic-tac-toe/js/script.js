@@ -65,10 +65,7 @@ board = [character, character, character,
 
 function declareWinner(){
   if (win == true){
-    // window.confirm(winner + " you have won.  Would you like to play again?");
-    if (confirm(winner + " you have won.  Would you like to play again?") == true){
-      character = " ";
-    }
+    window.alert(winner + " you have won.");
   }
 }
 
@@ -109,6 +106,7 @@ function updateBoard(){
 
   for(var i = 0; i < 9; i++){
       board[i] = ($(ids[i]).attr('value'));
+
   }
   // ["", "X",...]
 }
@@ -127,6 +125,10 @@ function boardIsFull(){
 
 function changeId(){
   $("input").click(function(){
+    if (win) {
+      window.alert("There is already a winner!");
+      return;
+    }
     //game system
     if (boardIsFull()){
       window.alert("Game over");
@@ -163,6 +165,7 @@ function changeId(){
 
     checkWinner();
     declareWinner();
+
   });
 
 }
