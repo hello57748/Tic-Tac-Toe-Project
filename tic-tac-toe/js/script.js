@@ -112,6 +112,15 @@ function changeId(){
       //checks for win conditions
       checkWinner();
       // return $(id).val(player());
+      if (turn === 0){
+        $("#player1").css("color", "red");
+        $("#player2").css("color", "black");
+      }
+
+      else if (turn === 1){
+        $("#player1").css("color", "black");
+        $("#player2").css("color", "red");
+      }
     }
   });
 
@@ -126,7 +135,10 @@ function changeId(){
 // }
 
 
-$(document).ready(changeId);
+$(document).ready(function(){
+  $("#player1").css("color", "red");
+  changeId();
+});
 
 
 
