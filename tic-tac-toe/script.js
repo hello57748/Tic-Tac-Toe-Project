@@ -52,7 +52,6 @@ function checkWinner(){
 //checks player 2 win conditions
   if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
     window.alert("Player one you have won");
-    winner = 1
   }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
     window.alert("Player one you have won");
   }else if (board[6] == "X" && board[7] == "X" && board[8] == "X"){
