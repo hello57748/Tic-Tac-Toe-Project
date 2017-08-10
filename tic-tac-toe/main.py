@@ -30,19 +30,19 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
+        template = jinja_environment.get_template("templates/main.html")
+
         p_name1 = self.request.get('player_one_name')
         p_name2 = self.request.get('player_two_name')
-
         game = Player(name1 = p_name1, name2 = p_name2)
         game_key = game.put()
-
         logging.info(game_key.get().name1)
         logging.info(game_key.get().name2)
 
-class SecondHandler(webapp2.RequestHandler):
-    def post(self):
-        template = jinja_environment.get_template("templates/main.html")
-        self.response.write(template.render())
+        names = {"player1": p_name1,
+                 "player2": p_name2}
+
+        self.response.write(template.render(names))
 
 
 # def post():
@@ -63,6 +63,5 @@ class SecondHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ("/main", SecondHandler)
+    ('/', MainHandler)
 ], debug=True)
