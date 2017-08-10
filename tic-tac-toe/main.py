@@ -36,10 +36,18 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template("templates/main.html")
         p_name1 = self.request.get('player_one_name')
         p_name2 = self.request.get('player_two_name')
-        game = Player(name1 = p_name1, name2 = p_name2)
-        game_key = game.put()
-        logging.info(game_key.get().name1)
-        logging.info(game_key.get().name2)
+        p1 = Player(name1 = p_name1, x_score = 0)
+        p2 = Player(name1 = p_name2, x_score = 0)
+        p1_key = p1.put()
+        p2_key = p2.put()
+
+        # if name1 = "":
+        #     not winner
+
+
+
+        logging.info(p1_key.get().name1)
+        logging.info(p2_key.get().name1)
 
         names = {"player1": p_name1,
                  "player2": p_name2}
