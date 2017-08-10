@@ -140,10 +140,6 @@ function boardIsFull(){
 
 function changeId(){
   $("input").click(function(){
-    if (win) {
-      window.alert("There is already a winner!");
-      return;
-    }
     //game system
     if (boardIsFull()){
       window.alert("Game over");
@@ -155,26 +151,31 @@ function changeId(){
       // this = "input"
       // this.id = the id
       //check if it's already filled
-
-      if (!spaceIsFilled(value)){ //if it's not filled
-        $(id).val(player());
+      if (win){
+        return;
       }
 
-      else if (spaceIsFilled(value)){ //if it's filled
-        window.alert("The space is already filled.");
-      }
-      //updates the board
-      updateBoard();
+      else {
+        if (!spaceIsFilled(value)){ //if it's not filled
+          $(id).val(player());
+        }
 
-      // return $(id).val(player());
-      if (turn === 0){
-        $("#player1").css("color", "red");
-        $("#player2").css("color", "black");
-      }
+        else if (spaceIsFilled(value)){ //if it's filled
+          window.alert("The space is already filled.");
+        }
+        //updates the board
+        updateBoard();
 
-      else if (turn === 1){
-        $("#player1").css("color", "black");
-        $("#player2").css("color", "red");
+        // return $(id).val(player());
+        if (turn === 0){
+          $("#player1").css("color", "red");
+          $("#player2").css("color", "black");
+        }
+
+        else if (turn === 1){
+          $("#player1").css("color", "black");
+          $("#player2").css("color", "red");
+        }
       }
     }
 
@@ -190,40 +191,3 @@ $(document).ready(function(){
   changeId();
 
 });
-
-
-// if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
-//  window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[6] == "X" && board[7] == "X" && board[8] == "X"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[0] == "X" && board[3] == "X" && board[6] == "X"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[2] == "X" && board[5] == "X" && board[8] == "X"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[0] == "X" && board[4] == "X" && board[8] == "X"){
-//  window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[2] == "X" && board[4] == "X" && board[6] == "X"){
-//  window.alert($(most_recent).attr('value') + " you have won");
-// }//checks player 2 win conditions
-// else if (board[0] == "O" && board[1] == "O" && board[2] == "O"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[3] == "O" && board[4] == "O" && board[5] == "O"){
-//  window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[6] == "O" && board[7] == "O" && board[8] == "O"){
-//  window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[0] == "O" && board[3] == "O" && board[6] == "O"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-// }else if (board[1] == "O" && board[4] == "O" && board[7] == "O"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-//   }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
-//     window.alert($(most_recent).attr('value') + " you have won");
-//   }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
-//   window.alert($(most_recent).attr('value') + " you have won");
-//   }else if (board[2] == "O" && board[4] == "O" && board[6] == "O"){
-//     window.alert($(most_recent).attr('value') + " you have won");
-//     }
-//   }
