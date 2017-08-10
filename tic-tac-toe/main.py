@@ -39,6 +39,11 @@ class MainHandler(webapp2.RequestHandler):
         p1_key = p1.put()
         p2_key = p2.put()
 
+        # if name1 = "":
+        #     not winner
+            
+
+
         logging.info(p1_key.get().name1)
         logging.info(p2_key.get().name1)
 

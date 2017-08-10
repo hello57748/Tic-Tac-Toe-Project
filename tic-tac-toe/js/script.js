@@ -1,47 +1,92 @@
 var turn = 0;
 var last_person = "#player1";
 var most_recent = "";
-board = [" ", " ", " ",
-         " ", " ", " ",
-         " ", " ", " "];
+var win = false;
+var winner = "";
+var character = " "
+board = [character, character, character,
+         character, character, character,
+         character, character, character];
 
   function checkWinner(){
   //checks player 2 win conditions
     if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
+      console.log(winner.name1)
+      console.log("TEST")
+      // $(winner).name1(winner)//keeping track of the score
     }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
-     window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[6] == "X" && board[7] == "X" && board[8] == "X"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[0] == "X" && board[3] == "X" && board[6] == "X"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
+    }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[2] == "X" && board[5] == "X" && board[8] == "X"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[0] == "X" && board[4] == "X" && board[8] == "X"){
-     window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[2] == "X" && board[4] == "X" && board[6] == "X"){
-     window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }//checks player 2 win conditions
     else if (board[0] == "O" && board[1] == "O" && board[2] == "O"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[3] == "O" && board[4] == "O" && board[5] == "O"){
-     window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[6] == "O" && board[7] == "O" && board[8] == "O"){
-    window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[0] == "O" && board[3] == "O" && board[6] == "O"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[1] == "O" && board[4] == "O" && board[7] == "O"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
-        window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
     }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
-      window.alert($(most_recent).attr('value') + " you have won");
+      win = true;
+      winner = $(most_recent).attr('value');
+      }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
+        win = true;
+        winner = $(most_recent).attr('value');
+      }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
+        win = true;
+        winner = $(most_recent).attr('value');
       }else if (board[2] == "O" && board[4] == "O" && board[6] == "O"){
-        window.alert($(most_recent).attr('value') + " you have won");
+        win = true;
+        winner = $(most_recent).attr('value');
         }
       }
+
+
+function declareWinner(){
+  if (win == true){
+    // window.confirm(winner + " you have won.  Would you like to play again?");
+    if (confirm(winner + " you have won.  Would you like to play again?") == true){
+      character = " ";
+    }
+    player = key.get();
+    player.x_score = player.x_score + 1
+    player.put()
+  }
+}
+
 
 //returns the appropriate character
 function player(){
@@ -132,18 +177,10 @@ function changeId(){
     }
 
     checkWinner();
+    declareWinner();
   });
 
 }
-
-// function checkFilled(){
-//   if ($(changeId()).val() == "X"){
-//     $(changeId()).val() !== "O";
-//   }else if ($(changeId()).val() == "O"){
-//     $(changeId()).val() !== "X";
-//   }
-// }
-
 
 $(document).ready(function(){
   $("#player1").css("color", "red");
@@ -152,28 +189,38 @@ $(document).ready(function(){
 });
 
 
-
-// function player(turn){
-//     for (turn = 0; turn < 9; turn+=1) {
-//         if (turn==0 || turn ==2 || turn==4 || turn==6 || turn==8){
-//             player_one_turn = True
-//             var player_symbol = $('#place').val();
-//         }else if (turn==1 || turn==3 || turn==5 || turn==7) {
-//             player_one_turn = False
-//          }
+// if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
+//  window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[6] == "X" && board[7] == "X" && board[8] == "X"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[0] == "X" && board[3] == "X" && board[6] == "X"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[2] == "X" && board[5] == "X" && board[8] == "X"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[0] == "X" && board[4] == "X" && board[8] == "X"){
+//  window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[2] == "X" && board[4] == "X" && board[6] == "X"){
+//  window.alert($(most_recent).attr('value') + " you have won");
+// }//checks player 2 win conditions
+// else if (board[0] == "O" && board[1] == "O" && board[2] == "O"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[3] == "O" && board[4] == "O" && board[5] == "O"){
+//  window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[6] == "O" && board[7] == "O" && board[8] == "O"){
+//  window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[0] == "O" && board[3] == "O" && board[6] == "O"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+// }else if (board[1] == "O" && board[4] == "O" && board[7] == "O"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+//   }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
+//     window.alert($(most_recent).attr('value') + " you have won");
+//   }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
+//   window.alert($(most_recent).attr('value') + " you have won");
+//   }else if (board[2] == "O" && board[4] == "O" && board[6] == "O"){
+//     window.alert($(most_recent).attr('value') + " you have won");
 //     }
-
-
-
-// console.log("player_one_turn")
-
-            // function myGreeting(){
-            //   console.log('button was clicked');
-            //   var userName = $('#username').val();
-            //   console.log(userName);
-            //   var userAge = $('#userage').val();
-            //   console.log(userAge);
-            //   $('#pink').text('welcome, ' + userName)
-            // }
-
-// $(document).ready(setup);
+//   }
