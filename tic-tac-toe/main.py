@@ -36,6 +36,7 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template("templates/main.html")
         p_name1 = self.request.get('player_one_name')
         p_name2 = self.request.get('player_two_name')
+        # p1 is x and p2 is o
         p1 = Player(name1 = p_name1, x_score = 0)
         p2 = Player(name1 = p_name2, x_score = 0)
         p1_key = p1.put()
@@ -48,6 +49,8 @@ class MainHandler(webapp2.RequestHandler):
 
         logging.info(p1_key.get().name1)
         logging.info(p2_key.get().name1)
+
+        logging.info(p1_key.get().x_score)
 
         names = {"player1": p_name1,
                  "player2": p_name2}
@@ -72,8 +75,9 @@ class SecondHandler(webapp2.RequestHandler):
         #     turn +=1
         # print player_one_turn
 
-
-
+class ThirdHandler(webapp2.RequestHandler):
+    def get(self):
+        pass
 
 
 
