@@ -37,7 +37,7 @@ class MainHandler(webapp2.RequestHandler):
         p_name1 = self.request.get('player_one_name')
         p_name2 = self.request.get('player_two_name')
         # p1 is x and p2 is o
-        p1 = Player(name1 = p_name1, x_score = 0)
+        p1 = Player(name1 = p_name1, x_score = 1)
         p2 = Player(name1 = p_name2, x_score = 0)
         p1_key = p1.put()
         p2_key = p2.put()
@@ -75,9 +75,6 @@ class SecondHandler(webapp2.RequestHandler):
         #     turn +=1
         # print player_one_turn
 
-class ThirdHandler(webapp2.RequestHandler):
-    def get(self):
-        pass
 
 
 

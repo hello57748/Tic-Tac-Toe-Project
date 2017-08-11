@@ -13,9 +13,6 @@ board = [character, character, character,
     if (board[0] == "X" && board[1] == "X" && board[2] == "X"){
       win = true;
       winner = $(most_recent).attr('value');
-      // console.log(winner.name1)
-      // console.log("TEST")
-      // $(winner).name1(winner)//keeping track of the score
     }else if (board[3] == "X" && board[4] == "X" && board[5] == "X"){
       win = true;
       winner = $(most_recent).attr('value');
@@ -23,9 +20,6 @@ board = [character, character, character,
       win = true;
       winner = $(most_recent).attr('value');
     }else if (board[0] == "X" && board[3] == "X" && board[6] == "X"){
-      win = true;
-      winner = $(most_recent).attr('value');
-    }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
       win = true;
       winner = $(most_recent).attr('value');
     }else if (board[1] == "X" && board[4] == "X" && board[7] == "X"){
@@ -56,12 +50,6 @@ board = [character, character, character,
     }else if (board[1] == "O" && board[4] == "O" && board[7] == "O"){
       win = true;
       winner = $(most_recent).attr('value');
-    }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
-      win = true;
-      winner = $(most_recent).attr('value');
-    }else if (board[0] == "O" && board[4] == "O" && board[8] == "O"){
-      win = true;
-      winner = $(most_recent).attr('value');
       }else if (board[2] == "O" && board[5] == "O" && board[8] == "O"){
         win = true;
         winner = $(most_recent).attr('value');
@@ -77,9 +65,6 @@ board = [character, character, character,
 
 function declareWinner(){
   if (win == true){
-    // player = key.get();
-    // player.x_score = player.x_score + 1
-    // player.put()
     window.alert(winner + " you have won.");
   }
 }
@@ -178,6 +163,9 @@ function changeId(){
         }
       }
     }
+
+    checkWinner();
+    declareWinner();
 
   });
 
