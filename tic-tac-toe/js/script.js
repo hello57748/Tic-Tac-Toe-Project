@@ -77,9 +77,9 @@ board = [character, character, character,
 
 function declareWinner(){
   if (win == true){
-    player = key.get();
-    player.x_score = player.x_score + 1
-    player.put()
+    // player = key.get();
+    // player.x_score = player.x_score + 1
+    // player.put()
     window.alert(winner + " you have won.");
   }
 }
