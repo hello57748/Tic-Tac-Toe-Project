@@ -179,9 +179,6 @@ function changeId(){
       }
     }
 
-    checkWinner();
-    declareWinner();
-
   });
 
 }
